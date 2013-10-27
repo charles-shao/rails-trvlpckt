@@ -10,6 +10,17 @@ class CommentsController < ApplicationController
     end
   end
 
+  # GET /comments/1
+  # GET /comments/1.json
+  def show
+    @comments = Comment.find_all_by_location_id(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @comments }
+    end
+  end
+
   # GET /comments/new
   # GET /comments/new.json
   def new
