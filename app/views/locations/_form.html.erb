@@ -23,6 +23,22 @@
     <%= f.label :lng %><br />
     <%= f.text_field :lng %>
   </div>
+
+  <%= f.fields_for :comment do |builder| %>
+    <div class="field">
+      <%= builder.label :author %><br />
+      <%= builder.text_field :author %><br />
+    </div>
+    <div class="field">
+      <%= builder.label :location %><br />
+      <%= builder.text_field :location %><br />
+    </div>
+    <div class="field">
+      <%= builder.label :message %><br />
+      <%= builder.text_field :message %><br />
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

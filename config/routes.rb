@@ -1,5 +1,6 @@
 RailsTrvlpckt::Application.routes.draw do
   resources :locations
+  resources :comments
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
