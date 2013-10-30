@@ -1,4 +1,6 @@
 RailsTrvlpckt::Application.routes.draw do
+  resources :photos
+
   resources :locations
   resources :comments
 
