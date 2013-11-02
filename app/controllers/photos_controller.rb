@@ -92,7 +92,7 @@ class PhotosController < ApplicationController
   def upload
     file = params[:image]
 
-    tmp_directory = '/app/tmp'
+    tmp_directory = Rails.root.join('tmp')
     name = file.original_filename
     id = name.split('_')[0]
 
@@ -108,8 +108,9 @@ class PhotosController < ApplicationController
     end
 
     marker_image_path = File.join(marker_directory, name)
-    puts "MARKER_IMAGE_PATH: #{marker_directory}"
-    File.open(marker_image_path, "wb") { |f| f.write(file.read) }
+    puts "MARKER_IMAGE_PATH: #{marker_image_path}"
+
+    File.open(marker_image_path, "w") { |f| f.write(file.read) }
 
     render text: "File uploaded successfully"
   end
