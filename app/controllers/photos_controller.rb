@@ -103,14 +103,18 @@ class PhotosController < ApplicationController
     marker_directory = File.join(tmp_directory, id)
 
     puts "MARKER_DIRECTORY: #{marker_directory}"
-    unless Dir.exists? marker_directory
+    unless Dir.exist? marker_directory
+      puts "Creatind marker directory..."
       Dir.mkdir(marker_directory)
     end
 
     marker_image_path = File.join(marker_directory, name)
     puts "MARKER_IMAGE_PATH: #{marker_image_path}"
 
-    File.open(marker_image_path, "w") { |f| f.write(file.read) }
+    File.open(marker_image_path, "wb") do |file|
+      puts file.inspect
+      file.write(file.read)
+    end
 
     render text: "File uploaded successfully"
   end
