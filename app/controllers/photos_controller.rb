@@ -82,7 +82,7 @@ class PhotosController < ApplicationController
   end
 
   def upload
-
+    param = params[:image]
   end
 
 end

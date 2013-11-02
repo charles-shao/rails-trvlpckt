@@ -1,5 +1,9 @@
 RailsTrvlpckt::Application.routes.draw do
-  resources :photos
+  resources :photos do
+    collection do
+      post :upload
+    end
+  end
 
   resources :locations
   resources :comments
