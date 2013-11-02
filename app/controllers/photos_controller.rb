@@ -81,8 +81,30 @@ class PhotosController < ApplicationController
     end
   end
 
+  #Parameters:
+  #{"image"=>#<ActionDispatch::Http::UploadedFile:0x007f016cb90798 @original_filename="travelpocket_20131102225820",
+  #@content_type="application/octet-stream",
+  #@headers="Content-Disposition:
+  #form-data; name=\"image\"; filename=\"travelpocket_20131102225820\"\r\n
+  #Content-Type: application/octet-stream\r\n",
+  #@tempfile=#<Tempfile:/tmp/RackMultipart20131102-2-1x9xx42>>}
+
   def upload
-    param = params[:image]
+    file = params[:image]
+
+    rails_directory = Rails.root.join('upload')
+    name = file.original_filename
+    id = name.split('_')[0]
+
+    marker_directory = File.join(rails_directory, id)
+    unless Dir.exists? marker_directory
+      Dir.mkdir(marker_directory)
+    end
+
+    marker_image_path = File.join(marker_directory, name)
+    File.open(marker_image_path, "wb") { |f| f.write(file.read) }
+
+    render text: "File uploaded successfully"
   end
 
 end
