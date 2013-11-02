@@ -92,11 +92,15 @@ class PhotosController < ApplicationController
   def upload
     file = params[:image]
 
-    rails_directory = Rails.root.join('upload')
+    tmp_directory = './tmp'
     name = file.original_filename
     id = name.split('_')[0]
 
-    marker_directory = File.join(rails_directory, id)
+    puts "FILE DETAILS ////////////"
+    puts name
+    puts id
+
+    marker_directory = File.join(tmp_directory, id)
     unless Dir.exists? marker_directory
       Dir.mkdir(marker_directory)
     end
