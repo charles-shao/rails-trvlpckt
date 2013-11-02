@@ -93,6 +93,11 @@ class PhotosController < ApplicationController
     file = params[:image]
 
     tmp_directory = Rails.root.join('tmp')
+    unless File.exist? tmp_directory
+      puts "Creatind tmp directory..."
+      FileUtils.mkdir tmp_directory
+    end
+
     name = file.original_filename
     id = name.split('_')[0]
 
@@ -103,9 +108,9 @@ class PhotosController < ApplicationController
     marker_directory = File.join(tmp_directory, id)
 
     puts "MARKER_DIRECTORY: #{marker_directory}"
-    unless Dir.exist? marker_directory
+    unless File.exist? marker_directory
       puts "Creatind marker directory..."
-      Dir.mkdir(marker_directory)
+      FileUtils.mkdir marker_directory
     end
 
     marker_image_path = File.join(marker_directory, name)
