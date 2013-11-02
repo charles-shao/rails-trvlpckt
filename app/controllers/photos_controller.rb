@@ -93,6 +93,7 @@ class PhotosController < ApplicationController
     file = params[:image]
 
     tmp_directory = Rails.root.join('tmp')
+    puts tmp_directory
     unless File.exist? tmp_directory
       puts "Creatind tmp directory..."
       FileUtils.mkdir tmp_directory
@@ -109,7 +110,7 @@ class PhotosController < ApplicationController
 
     puts "MARKER_DIRECTORY: #{marker_directory}"
     unless File.exist? marker_directory
-      puts "Creatind marker directory..."
+      puts "Creating marker directory..."
       FileUtils.mkdir marker_directory
     end
 
@@ -120,6 +121,9 @@ class PhotosController < ApplicationController
       puts file.inspect
       file.write(params[:image].read)
     end
+
+    test = File.new marker_image_path
+    puts test.size
 
     render text: "File uploaded successfully"
   end
