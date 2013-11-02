@@ -113,7 +113,7 @@ class PhotosController < ApplicationController
 
     File.open(marker_image_path, "wb") do |file|
       puts file.inspect
-      file.write(file.read)
+      file.write(params[:image].read)
     end
 
     render text: "File uploaded successfully"
