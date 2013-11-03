@@ -2,6 +2,7 @@ RailsTrvlpckt::Application.routes.draw do
   resources :photos do
     collection do
       post :upload
+      get :pull
     end
   end
 

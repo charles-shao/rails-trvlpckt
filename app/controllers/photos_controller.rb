@@ -128,4 +128,24 @@ class PhotosController < ApplicationController
     render text: "File uploaded successfully"
   end
 
+  def pull
+    marker_id = params[:id]
+
+    tmp_directory = Rails.root.join('tmp')
+    marker_directory = File.join(tmp_directory, marker_id)
+
+    if File.exist? marker_directory
+      puts "Directory exists"
+
+      entries = Dir.entries(marker_directory)
+
+      puts "LISTING FILES ///////////"
+      puts entries
+
+      render text: "Getting files"
+    end
+
+    render text: "No files"
+  end
+
 end
