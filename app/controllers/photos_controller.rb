@@ -158,7 +158,7 @@ class PhotosController < ApplicationController
       z = File.new(archive)
       puts "ZIP FILESIZE: #{z.size}"
 
-      render text: "Getting files"
+      send_file archive, type: 'application/octet-stream'
     else
       render text: "No files"
     end
