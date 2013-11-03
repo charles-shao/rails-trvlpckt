@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'zip'
+
 class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
