@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'zip'
+require 'zip/zip'
 
 class PhotosController < ApplicationController
   # GET /photos
