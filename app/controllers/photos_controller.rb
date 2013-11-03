@@ -143,9 +143,10 @@ class PhotosController < ApplicationController
       puts entries
 
       render text: "Getting files"
+    else
+      render text: "No files"
     end
 
-    render text: "No files"
   end
 
 end
