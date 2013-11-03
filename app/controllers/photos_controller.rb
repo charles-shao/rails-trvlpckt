@@ -147,7 +147,7 @@ class PhotosController < ApplicationController
       # END DEBUG
 
       archive = File.join(tmp_directory, 'images.zip')
-      FileUtils.rm archive, :force => true
+      File.delete archive if File.exists? archive
 
       Zip::ZipFile.open(archive, Zip::ZipFile::CREATE) do |zip|
         files.each do |file|
