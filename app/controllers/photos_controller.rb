@@ -150,8 +150,8 @@ class PhotosController < ApplicationController
       File.delete archive if File.exists? archive
 
       Zip::ZipFile.open(archive, Zip::ZipFile::CREATE) do |zip|
-        files.each do |file|
-          zip.add '', file
+        files.each_with_index do |file, index|
+          zip.add "img_#{index}", file
         end
       end
 
