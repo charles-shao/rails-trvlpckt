@@ -38,4 +38,4 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem 'rubyzip'
+gem 'rubyzip', :require => 'zip/zip'
